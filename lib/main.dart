@@ -1,5 +1,6 @@
 import 'package:ecommerce/pages/LoginPage.dart';
 import 'package:ecommerce/pages/home_page.dart';
+import 'package:ecommerce/utils/route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.kadwa().fontFamily),
       routes: {
         "/": (context) => LoginPage(),
-        "/home": (context) => HomePage(),
-        "/login": (context) => LoginPage()
+        route.homeRoute: (context) => HomePage(),
+        route.loginRoute: (context) => LoginPage()
       },
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -9,23 +10,13 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text("Its my first demo APP"),
-          
         ),
         body: Center(
           child: Container(
-            child: Text("Hello"), 
+            child: Text("Hello"),
           ),
-          
         ),
-       drawer: Drawer(),
       ),
-
-      
-     
-      
-        
-        
-      
     );
   }
 }
