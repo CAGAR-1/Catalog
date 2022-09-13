@@ -1,28 +1,46 @@
-import 'package:ecommerce/pages/LoginPage.dart';
-import 'package:ecommerce/pages/home_page.dart';
-import 'package:ecommerce/utils/route.dart';
+// import 'package:ecommerce/pages/signIn.dart';
+// import 'package:ecommerce/pages/home_page.dart';
+// import 'package:ecommerce/pages/Signup_old.dart';
+// import 'package:ecommerce/utils/route.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:google_fonts/google_fonts.dart';
+
+import 'package:ecommerce/controllers/authentication_controller.dart';
+import 'package:ecommerce/pages/auth_checker.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  Get.put(AuthenticationController());
+  runApp(const GetMaterialApp(home: AuthChecker()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primarySwatch: Colors.deepOrange,
-          fontFamily: GoogleFonts.kadwa().fontFamily),
-      routes: {
-        "/": (context) => LoginPage(),
-        route.homeRoute: (context) => HomePage(),
-        route.loginRoute: (context) => LoginPage()
-      },
-    );
-  }
-}
+
+
+// void main() {
+//   runApp(GetMaterialApp(home: MyApp()));
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//           primarySwatch: Colors.deepOrange,
+//           fontFamily: GoogleFonts.kadwa().fontFamily),
+//       debugShowMaterialGrid: false,
+//       initialRoute: route.loginRoute,
+//       routes: {
+//         "/": (context) => SignIn(),
+//         route.homeRoute: (context) => HomePage(),
+//         route.loginRoute: (context) => SignIn(),
+//         route.signupRoute: (context) => Signup(),
+//       },
+//     );
+//   }
+// }
