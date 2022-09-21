@@ -13,7 +13,7 @@ import 'package:ecommerce/pages/signup.dart';
 import 'package:ecommerce/views/admin/admin_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+
 
 void main() {
   Get.put(AuthenticationController());
