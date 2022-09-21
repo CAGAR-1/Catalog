@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class SignIn extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   final AuthenticationController authenticationController =
-      Get.put(AuthenticationController());
+      Get.find<AuthenticationController>();
 
   // LoginPage({super.key});
 
@@ -27,10 +27,13 @@ class SignIn extends StatelessWidget {
           key: formKey,
           child: Column(
             children: [
+            
+
               Image.asset(
                 "assets/images/login.png",
                 fit: BoxFit.cover,
               ),
+
               Text(
                 "Welcome  " + name,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -63,7 +66,7 @@ class SignIn extends StatelessWidget {
                     label: 'password',
                     isPassword: true,
                     validator: (value) {
-                      if (value!.length < 7) {
+                      if (value!.length < 6) {
                         return 'Please enter valid password';
                       }
                       // if (value.length < 6) {
@@ -76,20 +79,26 @@ class SignIn extends StatelessWidget {
                     height: 20,
                     width: 20,
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        var isValid = formKey.currentState!.validate();
+                  Obx(
+                    () => Container(
+                      child: authenticationController.isLoading.value
+                          ? const CircularProgressIndicator()
+                          : ElevatedButton(
+                              onPressed: () {
+                                var isValid = formKey.currentState!.validate();
 
-                        if (isValid) {
-                          var data = {
-                            'email': emailController.text,
-                            'password': passwordController.text
-                          };
-                          print(data);
-                          authenticationController.signUp(data);
-                        }
-                      },
-                      child: const Text("SignIn"))
+                                if (isValid) {
+                                  var data = {
+                                    'email': emailController.text,
+                                    'password': passwordController.text
+                                  };
+                                  print(data);
+                                  authenticationController.signIn(data);
+                                }
+                              },
+                              child: const Text("SignIn")),
+                    ),
+                  )
                 ]),
               )
             ],
@@ -97,3 +106,85 @@ class SignIn extends StatelessWidget {
         ));
   }
 }
+
+// ===============================================
+
+
+
+
+// import 'package:ecommerce/controllers/authentication_controller.dart';
+// import 'package:ecommerce/views/components/custom_text_field.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+
+// class SignIn extends StatelessWidget {
+//   final formKey = GlobalKey<FormState>();
+//   final AuthenticationController authenticationController =
+//       Get.find<AuthenticationController>();
+//   TextEditingController emailController = TextEditingController();
+//   TextEditingController passwordController = TextEditingController();
+//   SignIn({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Padding(
+//           padding: const EdgeInsets.all(8.0),
+//           child: Form(
+//             key: formKey,
+//             child: Column(
+//               children: [
+//                 const Center(
+//                     child: Text(
+//                   'Sign In',
+//                   style: TextStyle(
+//                       fontSize: 24,
+//                       fontWeight: FontWeight.bold,
+//                       fontStyle: FontStyle.italic),
+//                 )),
+//                 CustomTextField(
+//                   controller: emailController,
+//                   validator: (value) {
+//                     if (!value!.contains('@')) {
+//                       return 'Please enter a valid email';
+//                     }
+//                     return null;
+//                   },
+//                 ),
+//                 CustomTextField(
+//                   controller: passwordController,
+//                   label: 'Password',
+//                   isPassword: true,
+//                   validator: (value) {
+//                     if (value!.length < 6) {
+//                       return 'Please enter a valid password';
+//                     }
+//                     return null;
+//                   },
+//                 ),
+//                 Obx(() => Container(
+//                       child: authenticationController.isLoading.value
+//                           ? const CircularProgressIndicator()
+//                           : ElevatedButton(
+//                               onPressed: () {
+//                                 var isValid = formKey.currentState!.validate();
+//                                 if (isValid) {
+//                                   var data = {
+//                                     'email': emailController.text,
+//                                     'password': passwordController.text
+//                                   };
+//                                   print(data);
+//                                   authenticationController.signIn(data);
+//                                 }
+//                               },
+//                               child: const Text("SignIn")),
+//                     ))
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

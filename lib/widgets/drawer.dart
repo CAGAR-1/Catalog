@@ -8,7 +8,6 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-      
         children: [
           DrawerHeader(
               padding: EdgeInsets.zero,
@@ -16,10 +15,9 @@ class MyDrawer extends StatelessWidget {
                   margin: EdgeInsets.zero,
                   accountEmail: Text("Sagar@gmail.com"),
                   accountName: Text("Sagar Aryal"),
-                  
                   currentAccountPicture: CircleAvatar(
-                    
-                    backgroundImage: NetworkImage(""),
+                    backgroundImage: NetworkImage(
+                        'https://www.scienceabc.com/wp-content/uploads/2019/01/snow-fall.jpg'),
                   )))
         ],
       ),

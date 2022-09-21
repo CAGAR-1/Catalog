@@ -1,6 +1,8 @@
-import 'package:ecommerce/pages/home_page.dart';
+import 'package:ecommerce/pages/my_home_page.dart';
+import 'package:ecommerce/pages/tabs/home_page.dart';
 import 'package:ecommerce/pages/signIn.dart';
 import 'package:ecommerce/service/auth_service.dart';
+import 'package:ecommerce/views/admin/admin_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,9 +25,15 @@ class _AuthCheckerState extends State<AuthChecker> {
     var token = await authService.getToken();
     print(token);
     if (token != null) {
-      Get.to(Home());
+      var isAdmin = await authService.getIsAdmin();
+      if (isAdmin) {
+        Get.off(() => const AdminHome());
+      } else {
+        Get.off(() => MyHomePage());
+      }
+      // Get.to(MyHomePage());
     } else {
-      Get.to(SignIn());
+      Get.to(() => SignIn());
     }
   }
 
