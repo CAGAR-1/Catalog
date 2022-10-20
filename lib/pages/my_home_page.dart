@@ -22,13 +22,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _map = <AppTab, TabBuilder>{
     AppTab.home: () {
-      return JuicePage1();
+      return Homeuser();
     },
     AppTab.cart: () {
-      return Home();
+      return Homeuser();
     },
     AppTab.info: () {
-      return JuicePage1();
+      return Homeuser();
     }
   };
 

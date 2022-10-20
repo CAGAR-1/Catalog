@@ -9,13 +9,24 @@ class SignUp extends StatelessWidget {
       Get.find<AuthenticationController>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController conformpasswordController = TextEditingController();
+
   SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
+        body: Stack(children: [
+      Positioned.fill(
+          child: Image.asset(
+        "assets/images/bg.jpg",
+        fit: BoxFit.cover,
+        // color: Colors.black.withOpacity(0.10),
+        // colorBlendMode: BlendMode.darken,
+      )),
+      ListView(children: [
+        Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
             key: formKey,
@@ -30,6 +41,19 @@ class SignUp extends StatelessWidget {
                       fontStyle: FontStyle.italic),
                 )),
                 CustomTextField(
+                  icon: Icons.lock,
+                  controller: nameController,
+                  label: 'Name',
+                  isPassword: false,
+                  validator: (value) {
+                    if (value!.length < 1) {
+                      return 'Please enter Your full name';
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextField(
+                  icon: Icons.mail,
                   controller: emailController,
                   validator: (value) {
                     if (!value!.contains('@')) {
@@ -39,6 +63,7 @@ class SignUp extends StatelessWidget {
                   },
                 ),
                 CustomTextField(
+                  icon: Icons.lock,
                   controller: passwordController,
                   label: 'Password',
                   isPassword: true,
@@ -61,13 +86,18 @@ class SignUp extends StatelessWidget {
                         authenticationController.signUp(data);
                       }
                     },
-                    child: const Text("SignUp"))
+                    child: const Text("SignUp")),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Login"))
               ],
             ),
           ),
         ),
-      ),
-    );
+      ]),
+    ]));
   }
 }
 

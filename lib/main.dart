@@ -7,19 +7,23 @@
 // import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ecommerce/controllers/authentication_controller.dart';
+import 'package:ecommerce/pages/auth_checker.dart';
+import 'package:ecommerce/pages/signIn.dart';
+import 'package:ecommerce/pages/signup.dart';
 
 import 'package:ecommerce/views/admin/admin_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 void main() {
   Get.put(AuthenticationController());
   runApp(GetMaterialApp(
-    home: AdminHome(),
-    debugShowCheckedModeBanner: true,
+    home: AuthChecker(),
+    debugShowCheckedModeBanner: false,
   ));
 }
+//Color(0xFF6A62B7)
+//kBackgroundColor=Color(0xFFE5E5E5)
 
 
 
