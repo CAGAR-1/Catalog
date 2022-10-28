@@ -70,10 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tab Navigator'),
-        automaticallyImplyLeading: false,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Tab Navigator'),
+      //   automaticallyImplyLeading: false,
+      // ),
       body: _buildBody(),
       bottomNavigationBar: _buildbottomNavigationBar(),
     );

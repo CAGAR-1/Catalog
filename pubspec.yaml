@@ -42,6 +42,7 @@ dependencies:
   tabnavigator: ^1.0.0
   font_awesome_flutter: ^10.2.1
   flutter_svg: ^1.1.5
+  flutterui_modifiers: ^0.3.1
 
 dev_dependencies:
   flutter_test:

@@ -1,38 +1,110 @@
+import 'dart:ui';
+
 import 'package:ecommerce/controllers/authentication_controller.dart';
+import 'package:ecommerce/views/components/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutterui_modifiers/TextField.dart';
 
+class Homeuser extends StatefulWidget {
+  Homeuser({Key? key}) : super(key: key);
 
-class Homeuser extends StatelessWidget {
+  @override
+  State<Homeuser> createState() => _HomeuserState();
+}
+
+class _HomeuserState extends State<Homeuser> {
   final AuthenticationController authenticationController =
       Get.find<AuthenticationController>();
-  Homeuser({Key? key}) : super(key: key);
+  TextEditingController search = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  List categories = [
+    "assets/images/haircut.jpg",
+    "assets/images/makeup.jpg",
+    "assets/images/spa.jpg",
+    "assets/images/manicure.jpg",
+    "assets/images/haircut.jpg",
+  ];
+  List names = ["Haircut", "makeup", "Hair Spa", "Manicure", "Haircut"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(
-              child: Text('Home'),
+          child: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        hintText: "Find your cut",
+                        filled: true,
+                        fillColor: Color(0xFF6A62B7).withAlpha(50),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                              color: Colors.pink,
+                            ))),
+                  )
+                ],
+              ),
             ),
-            ElevatedButton(
-                onPressed: () => authenticationController.signOut(),
-                child: const Text("Sign Out"))
-          ],
-        ),
-      ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              height: 280,
+              child: ListView.builder(
+                  itemCount: 5,
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: ((context, index) {
+                    return Column(children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: index == 0 ? 0 : 20, bottom: 15, top: 5),
+                        height: 200,
+                        width: 190,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.blue,
+                          image: DecorationImage(
+                              image: AssetImage(categories[index]),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                      Text(
+                        names[index],
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ]);
+                  })),
+            ),
+          )
+        ],
+      )
+
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     const Center(
+          //       child: Text('Home'),
+          //     ),
+          //     ElevatedButton(
+          //         onPressed: () => authenticationController.signOut(),
+          //         child: const Text("Sign Out"))
+          //   ],
+          // ),
+          ),
     );
   }
 }
-
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 
