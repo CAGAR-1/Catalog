@@ -65,28 +65,35 @@ class _HomeuserState extends State<Homeuser> {
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
-                    return Column(children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: index == 0 ? 0 : 20, bottom: 15, top: 5),
-                        height: 200,
-                        width: 190,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.blue,
-                          image: DecorationImage(
-                              image: AssetImage(categories[index]),
-                              fit: BoxFit.cover),
+                    return Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: index == 0 ? 0 : 20, bottom: 15, top: 5),
+                          height: 200,
+                          width: 190,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.blue,
+                            image: DecorationImage(
+                                image: AssetImage(categories[index]),
+                                fit: BoxFit.cover),
+                          ),
                         ),
-                      ),
-                      Text(
-                        names[index],
-                        style: TextStyle(fontSize: 20),
-                      )
-                    ]);
+                        Text(
+                          names[index],
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    );
                   })),
             ),
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                authenticationController.signOut();
+              },
+              child: Text("Sign Out"))
         ],
       )
 
@@ -225,3 +232,5 @@ class _HomeuserState extends State<Homeuser> {
 //     );
 //   }
 // }
+
+
