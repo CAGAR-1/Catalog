@@ -198,6 +198,7 @@
 // }
 
 import 'package:ecommerce/views/admin/components/add_category.dart';
+import 'package:ecommerce/views/admin/components/add_product.dart';
 import 'package:ecommerce/views/admin/components/admin_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -220,6 +221,26 @@ class Categories extends StatelessWidget {
               icon: Icons.add),
           const Center(
             child: Text('Categories'),
+          ),
+          AdminButton(
+            onTap: () {
+              Get.bottomSheet(
+                
+                
+                AddProduct(
+                
+                nameController: TextEditingController(),
+                descriptionController: TextEditingController(),
+                category_IdContoller: TextEditingController(),
+                priceContoller: TextEditingController(),
+                imageController: TextEditingController(),
+              ));
+            },
+            icon: Icons.add,
+            title: "Add Product",
+          ),
+          const Center(
+            child: Text('Product'),
           ),
         ],
       ),

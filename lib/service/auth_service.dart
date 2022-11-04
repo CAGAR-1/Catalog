@@ -13,6 +13,7 @@ class AuthService {
     return token;
   }
 
+
   getIsAdmin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var isAdmin = prefs.getBool('isAdmin');
