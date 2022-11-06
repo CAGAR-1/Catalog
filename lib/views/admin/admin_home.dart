@@ -1,12 +1,19 @@
-import 'package:ecommerce/pages/auth_checker.dart';
 import 'package:ecommerce/views/admin/components/admin_button.dart';
 import 'package:ecommerce/views/admin/pages/category_page.dart';
+import 'package:ecommerce/views/admin/pages/product_page.dart';
 import 'package:ecommerce/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
+
+
+
+
 class AdminHome extends StatelessWidget {
   const AdminHome({Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +37,12 @@ class AdminHome extends StatelessWidget {
                   coloring: Colors.white70,
                 ),
                 AdminButton(
-                  onTap: () {},
+                  onTap: () =>Get.to(()=>Product())
+                  
+                  ,
                   icon: Icons.shopping_cart,
                   // fillcolor: 0xFFf4d160,
-                  title: "Orders",
+                  title: "Product",
                   coloring: Colors.white70,
                 ),
                 AdminButton(
@@ -65,13 +74,9 @@ class AdminHome extends StatelessWidget {
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
-                        )
-                        )
-                        )
-                        ),
+                        )))),
               ],
             ),
-            
           ),
         ),
       ),
@@ -111,3 +116,7 @@ class AdminHome extends StatelessWidget {
 //     );
 //   }
 // }
+
+
+
+

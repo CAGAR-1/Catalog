@@ -222,26 +222,26 @@ class Categories extends StatelessWidget {
           const Center(
             child: Text('Categories'),
           ),
-          AdminButton(
-            onTap: () {
-              Get.bottomSheet(
+          // AdminButton(
+          //   onTap: () {
+          //     Get.bottomSheet(
                 
                 
-                AddProduct(
+          //       AddProduct(
                 
-                nameController: TextEditingController(),
-                descriptionController: TextEditingController(),
-                category_IdContoller: TextEditingController(),
-                priceContoller: TextEditingController(),
-                imageController: TextEditingController(),
-              ));
-            },
-            icon: Icons.add,
-            title: "Add Product",
-          ),
-          const Center(
-            child: Text('Product'),
-          ),
+          //       nameController: TextEditingController(),
+          //       descriptionController: TextEditingController(),
+          //       category_IdController: TextEditingController(),
+          //       priceController: TextEditingController(),
+          //       imageController: TextEditingController(),
+          //     ));
+          //   },
+          //   icon: Icons.add,
+          //   title: "Add Product",
+          // ),
+          // const Center(
+          //   child: Text('Product'),
+          // ),
         ],
       ),
     );

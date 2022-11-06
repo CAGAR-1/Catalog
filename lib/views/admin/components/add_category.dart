@@ -1,4 +1,5 @@
 import 'package:ecommerce/controllers/category_controller.dart';
+import 'package:ecommerce/main.dart';
 import 'package:ecommerce/views/components/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,16 @@ class AddCategory extends StatelessWidget {
       height: 200,
       color: Colors.white,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+
+
+
+
+
+      
+
+
+      
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomTextField(
@@ -28,6 +39,7 @@ class AddCategory extends StatelessWidget {
             validator: (value) {
               return null;
             },
+
           ),
           CustomTextField(
             label: 'Category Description',
@@ -35,6 +47,11 @@ class AddCategory extends StatelessWidget {
             validator: (value) {
               return null;
             },
+
+
+
+
+
           ),
           ElevatedButton(
               onPressed: () {
