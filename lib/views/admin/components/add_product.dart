@@ -1,98 +1,11 @@
+
+
+// import 'dart:io';
 // import 'package:ecommerce/controllers/product_controller.dart';
 // import 'package:ecommerce/views/components/custom_text_field.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
-// class AddProduct extends StatelessWidget {
-//   final TextEditingController nameController;
-//   final TextEditingController descriptionController;
-//   final TextEditingController priceController;
-//   final TextEditingController category_IdController;
-//   final TextEditingController imageController;
-//   final productcontroller = Get.put(ProductController());
-//   AddProduct(
-//       {Key? key,
-//       required this.nameController,
-//       required this.descriptionController,
-//       required this.priceController,
-//       required this.category_IdController,
-//       required this.imageController})
-//       : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         height: 800,
-//         color: Colors.white,
-//         child: SingleChildScrollView(
-//           child: Column(
-//             children: [
-//               CustomTextField(
-//                 label: 'Name',
-//                 controller: nameController,
-//                 validator: (value) {
-//                   return null;
-//                 },
-//               ),
-//               CustomTextField(
-//                 label: 'Description',
-//                 controller: descriptionController,
-//                 validator: (value) {
-//                   return null;
-//                 },
-//               ),
-//               CustomTextField(
-//                 label: 'Category Id',
-//                 controller: descriptionController,
-//                 validator: (value) {
-//                   return null;
-//                 },
-//               ),
-//               CustomTextField(
-//                 label: 'Price',
-//                 controller: descriptionController,
-//                 validator: (value) {
-//                   return null;
-//                 },
-//               ),
-//               CustomTextField(
-//                 label: 'image',
-//                 controller: descriptionController,
-//                 validator: (value) {
-//                   return null;
-//                 },
-//               ),
-//               ElevatedButton(
-//                   onPressed: () {
-//                     var data = {
-//                       "name": nameController.text,
-//                       "description": descriptionController.text,
-//                       "price": priceController.text,
-//                       "category_id": category_IdController.text,
-//                       "image": imageController.text,
-//                     };
-//                     productcontroller.add(data);
-//                   },
-//                   child: const Text("submit"))
-//             ],
-//           ),
-//         ));
-//   }
-// }
-
-
-
-
-
-// Something new
-
-
-
-// import 'dart:io';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:git_flutter_demo/controllers/product_controller.dart';
-// import 'package:git_flutter_demo/views/conponents/custom_text_field.dart';
 // import 'package:image_picker/image_picker.dart';
 
 // class AddEditProductForm extends StatefulWidget {
@@ -280,7 +193,12 @@
 //                             "category_id": categoryIdController.text,
 //                             "price": priceController.text
 //                           };
-//                           productController.add(data, pickedFile);
+//                           if (pickedFile != null) {
+//                             productController.add(
+//                                 data: data, image: pickedFile!);
+//                           } else {
+//                             Get.snackbar("Error", "Please add a Image");
+//                           }
 //                         }
 //                       },
 //                       child: const Text('Save')),
@@ -293,6 +211,12 @@
 //     );
 //   }
 // }
+
+
+
+
+
+//new one
 
 import 'dart:io';
 import 'package:ecommerce/controllers/product_controller.dart';
@@ -487,7 +411,12 @@ class _AddEditProductFormState extends State<AddEditProductForm> {
                             "category_id": categoryIdController.text,
                             "price": priceController.text
                           };
-                          productController.add(data);
+                          if (pickedFile != null) {
+                            productController.add(
+                                data: data, image: pickedFile!);
+                          } else {
+                            Get.snackbar("Error", "Please add a Image");
+                          }
                         }
                       },
                       child: const Text('Save')),
@@ -500,4 +429,3 @@ class _AddEditProductFormState extends State<AddEditProductForm> {
     );
   }
 }
-

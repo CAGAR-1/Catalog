@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:ecommerce/pages/tabs/home_page.dart';
 import 'package:ecommerce/pages/tabs/info.dart';
-import 'package:ecommerce/pages/tabs/viewss.dart';
+
 import 'package:flutter/material.dart';
 import 'package:tabnavigator/tabnavigator.dart';
 
