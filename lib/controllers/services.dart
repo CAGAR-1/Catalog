@@ -13,6 +13,8 @@ class Services extends GetxController {
       num--;
     }
   }
+
+  updateProduct() {}
 }
 
 //asfdf
