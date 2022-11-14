@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:ecommerce/pages/tabs/cart_page.dart';
 import 'package:ecommerce/pages/tabs/home_page.dart';
 import 'package:ecommerce/pages/tabs/info.dart';
 
@@ -25,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return Homeuser();
     },
     AppTab.cart: () {
-      return Homeuser();
+      return Cart();
     },
     AppTab.info: () {
       return Homeuser();

@@ -6,15 +6,17 @@
 // import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
-
-
 import 'package:ecommerce/controllers/authentication_controller.dart';
+import 'package:ecommerce/controllers/cart_controller.dart';
+import 'package:ecommerce/controllers/services.dart';
 import 'package:ecommerce/pages/auth_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
   Get.put(AuthenticationController());
+  Get.put(CartController());
+  final Services services = Get.put(Services());
   runApp(GetMaterialApp(
     home: AuthChecker(),
     debugShowCheckedModeBanner: false,
@@ -52,3 +54,10 @@ void main() {
 //     );
 //   }
 // }
+
+
+
+/// Harek kura ko cntroller chinxa controll garna ko lagi
+// arrya ma value overlape hunxa vane map ma hudaina jstai cart ma 1 add garda
+
+//map ma key value hunxa

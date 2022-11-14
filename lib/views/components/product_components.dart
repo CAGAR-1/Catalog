@@ -1,16 +1,17 @@
-
-
+import 'package:ecommerce/controllers/services.dart';
+import 'package:ecommerce/utils/api.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:git_flutter_demo/utils/api.dart';
-
+import '../../controllers/cart_controller.dart';
 import '../../models/product.dart';
-import '../../utils/api.dart';
+
 
 
 class ProductComponent extends StatelessWidget {
   final Product product;
-  const ProductComponent({Key? key, required this.product}) : super(key: key);
+  final CartController cartController = Get.find();
+  ProductComponent({Key? key, required this.product}) : super(key: key);
+  final Services services = Get.find<Services>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +39,83 @@ class ProductComponent extends StatelessWidget {
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
             top: 0,
             right: 20,
-            child: CircleAvatar(child: Icon(Icons.shopping_cart))),
+            child: InkWell(
+                onTap: () {
+                  Get.bottomSheet(Container(
+                      height: Get.height / 2,
+                      color: Colors.white,
+                      child: Column(children: [
+                        SizedBox(
+                          height: 200,
+                          child: Image.network(
+                            "$BASE_URL/${product.image}",
+                          ),
+                        ),
+                        Text(
+                          product.description,
+                          style: TextStyle(
+                              fontSize: 13, fontWeight: FontWeight.bold),
+                        ),
+                        Text(product.price.toString()),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                services.increaseProduct();
+                              },
+                              child: CircleAvatar(
+                                radius: 30,
+                                child: Text(
+                                  "+",
+                                  style: TextStyle(fontSize: 30),
+                                ),
+                              ),
+                            ),
+                            Obx(() {
+                              return Text(
+                                services.num.toString(),
+                                style: TextStyle(fontSize: 40),
+                              );
+                            }),
+                            InkWell(
+                              onTap: () {
+                                services.decreaseProduct();
+                              },
+                              child: CircleAvatar(
+                                // backgroundColor: Colors.grey,
+                                radius: 30,
+                                child: Text(
+                                  "-",
+                                  style: TextStyle(fontSize: 30),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  cartController.add(
+                                    Product(
+                                        id: product.id,
+                                        description: product.description,
+                                        image: product.image,
+                                        price: product.price,
+                                        quantity: "1",
+                                        category: product.category),
+                                  );
+                                },
+                                child: const Text('Add to cart'))
+                          ],
+                        ),
+                      ])));
+                },
+                child: const CircleAvatar(child: Icon(Icons.shopping_cart)))),
       ],
     );
   }
