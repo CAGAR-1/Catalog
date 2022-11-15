@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import '../../controllers/cart_controller.dart';
 import '../../models/product.dart';
 
-
-
 class ProductComponent extends StatelessWidget {
   final Product product;
   final CartController cartController = Get.find();
@@ -65,7 +63,7 @@ class ProductComponent extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {
-                                services.increaseProduct();
+                                cartController.increment();
                               },
                               child: CircleAvatar(
                                 radius: 30,
@@ -77,13 +75,13 @@ class ProductComponent extends StatelessWidget {
                             ),
                             Obx(() {
                               return Text(
-                                services.num.toString(),
+                                cartController.quantity.toString(),
                                 style: TextStyle(fontSize: 40),
                               );
                             }),
                             InkWell(
                               onTap: () {
-                                services.decreaseProduct();
+                                cartController.decrement();
                               },
                               child: CircleAvatar(
                                 // backgroundColor: Colors.grey,
@@ -120,4 +118,3 @@ class ProductComponent extends StatelessWidget {
     );
   }
 }
-//hjjjjjjjjjjjjjjjjjjj
