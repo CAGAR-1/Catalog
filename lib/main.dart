@@ -12,11 +12,17 @@ import 'package:ecommerce/controllers/services.dart';
 import 'package:ecommerce/pages/auth_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:khalti/khalti.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Khalti.init(
+    publicKey: 'test_public_key_196df8c10c0743f68f66d5ded92b5157',
+    enabledDebugging: false,
+  );
   Get.put(AuthenticationController());
   Get.put(CartController());
-  final Services services = Get.put(Services());
+
   runApp(GetMaterialApp(
     home: AuthChecker(),
     debugShowCheckedModeBanner: false,
@@ -46,7 +52,10 @@ void main() {
 //       debugShowMaterialGrid: false,
 //       initialRoute: route.loginRoute,
 //       routes: {
-//         "/": (context) => SignIn(),
+//   
+//
+//
+//      "/": (context) => SignIn(),
 //         route.homeRoute: (context) => HomePage(),
 //         route.loginRoute: (context) => SignIn(),
 //         route.signupRoute: (context) => Signup(),

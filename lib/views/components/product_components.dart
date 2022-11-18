@@ -9,7 +9,7 @@ class ProductComponent extends StatelessWidget {
   final Product product;
   final CartController cartController = Get.find();
   ProductComponent({Key? key, required this.product}) : super(key: key);
-  final Services services = Get.find<Services>();
+  // final Services services = Get.find<Services>();
 
   @override
   Widget build(BuildContext context) {

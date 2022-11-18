@@ -23,6 +23,7 @@
 
 import 'package:ecommerce/controllers/cart_controller.dart';
 import 'package:ecommerce/utils/api.dart';
+import 'package:ecommerce/views/payment/khalti.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -68,7 +69,7 @@ class Cart extends StatelessWidget {
               color: Colors.black,
               width: Get.width,
               child: TextButton(
-                onPressed: () => Get.snackbar("Success", "Order placed"),
+                onPressed: () => Get.to(KhaltiPayment()),
                 child: Text(
                   "Place Order Rs${cartController.total.value}",
                   style: const TextStyle(color: Colors.white),
